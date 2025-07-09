@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <title>Redirecting...</title>
-    <script>
-      // Minimal universal redirect for GitHub Pages SPA
-      (function() {
-        var path = window.location.pathname + window.location.search + window.location.hash;
-        // Remove leading slash for hash routing
-        var hashPath = path.replace(/^\//, '');
-        // Redirect to index.html with hash route
-        window.location.replace('/#/' + hashPath);
-      })();
+    <script type="text/javascript">
+        (function () {
+            var l = window.location;
+            // Get the path after the domain and possible base path
+            var path = l.pathname;
+            // Remove leading and trailing slashes
+            path = path.replace(/^\/*/, '').replace(/\/*$/, '');
+            // Remove index.html or 404.html
+            if (path === 'index.html' || path === '404.html') path = '';
+            // If there's a base path (e.g., /myrepo/), you can set it here
+            var base = '';
+            // If you use a custom domain, base can be left as ''
+            var newUrl = base + '/#/' + path + l.search + l.hash;
+            // Avoid double slashes
+            newUrl = newUrl.replace(/\/\/+/, '/');
+            window.location.replace(newUrl);
+        })();
     </script>
-  </head>
-  <body>
+</head>
+
+<body>
     <h1>Redirecting...</h1>
-  </body>
+</body>
+
 </html>
