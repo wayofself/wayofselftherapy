@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=/#" />
-    <script type="text/javascript">
-      // SPA redirect for GitHub Pages
+    <title>Redirecting...</title>
+    <script>
+      // Minimal universal redirect for GitHub Pages SPA
       (function() {
-        var l = window.location;
-        var pathname = l.pathname.replace(/^\//, '');
-        if (pathname && pathname !== 'index.html') {
-          window.location.replace('/#' + l.pathname + l.search + l.hash);
-        }
+        var path = window.location.pathname + window.location.search + window.location.hash;
+        // Remove leading slash for hash routing
+        var hashPath = path.replace(/^\//, '');
+        // Redirect to index.html with hash route
+        window.location.replace('/#/' + hashPath);
       })();
     </script>
-    <title>404 Not Found</title>
   </head>
   <body>
-    <h1>404 - Page Not Found</h1>
-    <p>Redirecting to the app...</p>
+    <h1>Redirecting...</h1>
   </body>
 </html>
