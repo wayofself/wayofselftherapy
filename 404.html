@@ -1,31 +1,9 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8" />
-    <title>Redirecting...</title>
-    <script type="text/javascript">
-        (function () {
-            var l = window.location;
-            // Get the path after the domain and possible base path
-            var path = l.pathname;
-            // Remove leading and trailing slashes
-            path = path.replace(/^\/*/, '').replace(/\/*$/, '');
-            // Remove index.html or 404.html
-            if (path === 'index.html' || path === '404.html') path = '';
-            // If there's a base path (e.g., /myrepo/), you can set it here
-            var base = '';
-            // If you use a custom domain, base can be left as ''
-            var newUrl = base + '/#/' + path + l.search + l.hash;
-            // Avoid double slashes
-            newUrl = newUrl.replace(/\/\/+/, '/');
-            window.location.replace(newUrl);
-        })();
+  <head>
+    <script>
+      sessionStorage.redirect = location.href;
     </script>
-</head>
-
-<body>
-    <h1>Redirecting...</h1>
-</body>
-
+    <meta http-equiv="refresh" content="0;URL='/'">
+  </head>
 </html>
