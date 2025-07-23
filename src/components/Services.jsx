@@ -1,18 +1,75 @@
 import { useTranslation } from 'react-i18next';
+import React, { useState } from 'react';
+
+const faqs = [
+    {
+        q: 'services.faq1.q',
+        a: 'services.faq1.a',
+    },
+    {
+        q: 'services.faq2.q',
+        a: 'services.faq2.a',
+    },
+    {
+        q: 'services.faq3.q',
+        a: 'services.faq3.a',
+    },
+    {
+        q: 'services.faq4.q',
+        a: 'services.faq4.a',
+    },
+    {
+        q: 'services.faq5.q',
+        a: 'services.faq5.a',
+    },
+    {
+        q: 'services.faq6.q',
+        a: 'services.faq6.a',
+    }
+];
+
+function FAQSection({ t }) {
+    const [openIdx, setOpenIdx] = useState(0);
+    return (
+        <ul className="space-y-8 max-w-3xl mx-auto">
+            {faqs.map((faq, idx) => {
+                const isOpen = openIdx === idx;
+                return (
+                    <li key={faq.q}>
+                        <button
+                            className={`w-full text-left flex items-center justify-between text-xl md:text-xl text-gray-700 font-normal py-2 border-b border-gray-400 focus:outline-none transition-colors ${isOpen ? 'font-medium' : ''}`}
+                            onClick={() => setOpenIdx(isOpen ? -1 : idx)}
+                            aria-expanded={isOpen}
+                        >
+                            <span>{t(faq.q)}</span>
+                            <span className="ml-2 text-2xl">{isOpen ? '−' : '+'}</span>
+                        </button>
+                        {isOpen && (
+                            <div className="mt-6 mb-2 text-gray-700 text-2sm leading-relaxed border-b border-gray-300 pb-6">
+                                {t(faq.a)}
+                            </div>
+                        )}
+                    </li>
+                );
+            })}
+        </ul>
+    );
+}
 
 const Services = () => {
     const { t } = useTranslation();
     return (
         <div
             className="min-h-screen py-5 px-4 sm:px-6 font-poppins bg-[#f9f5f0]"
-            >
+        >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-poppins">
                 {/* Main Heading */}
-                <div className="text-center my-16">
-                    <h1 className="text-4xl md:text-5xl font-bold text-black">
+                <div className="text-center my-6">
+                    <h1 className="text-2xl md:text-3xl font-bold text-black">
                         {t('services.title')}
                     </h1>
-                    <div className="w-55 h-1 bg-black mx-auto mt-6"></div>
+                    <div className="w-45 h-1 bg-black mx-auto mt-6"></div>
+
                 </div>
 
                 <div className="grid grid-cols-1  lg:grid-cols-2 gap-10">
@@ -120,11 +177,19 @@ const Services = () => {
                                     <span>{t('services.group3')}</span>
                                 </li>
                             </ul>
-                            {/*<button className="mt-6 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300">*/}
-                            {/*    Join Waitlist*/}
-                            {/*</button>*/}
                         </div>
                     </div>
+                </div>
+
+                {/* FAQ section */}
+                <div className="my-13">
+                    <h2 className="text-3xl font-serif font-bold text-black text-center">{t('services.faqTitle', 'Frequently Asked Questions')}</h2>
+                    <div className="w-45 h-1 bg-black mx-auto mt-6 mb-8"></div>
+                    <FAQSection t={t} />
+                </div>
+
+                <div>
+
                 </div>
             </div>
         </div>

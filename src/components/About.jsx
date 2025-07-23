@@ -1,29 +1,15 @@
 import { useTranslation } from 'react-i18next';
-import bannerImg from '/bridge.jpg';
-import profile from '../assets/protfolio3.jpg';
-import profileImg from '../assets/protfolio2.jpg';
+import profile from '../assets/portfolio3.jpg';
+import profileImg from '../assets/portfolio2.jpg';
 
 const About = () => {
     const { t } = useTranslation();
     return (
         <div className="flex flex-col min-h-screen font-poppins bg-gradient-to-br from-[#f8f7ee] via-[#e0d7c6] to-[#b7e4c7]">
-
-            <div
-                className=" relative py-60  md:py-60 px-4 sm:px-6 lg:px-8 h-16 md:h-90"
-                style={{
-                    backgroundImage: "url('" + bannerImg + "')",
-                    backgroundSize: "cover",
-                    backgroundPosition: "bottom 40% left 15%",
-                    backgroundAttachment: "scroll",
-                    opacity: 0.9,
-                }}
-            >
-            </div>
-
             {/* About Section */}
-            <div className="bg-gray-100 py-16 px-4">
+            <div className="bg-gray-100 py-8 px-4">
                 <div className="container mx-auto max-w-5xl">
-                    <div className="flex flex-col md:flex-row gap-12 items-center mb-10">
+                    <div className="flex flex-col md:flex-row gap-12 items-center">
                         <div className="md:w-1/3 flex flex-col justify-center">
                             <h2 className="text-3xl font-bold text-gray-800 mb-6 pb-2 border-b-2 border-gray-300">
                                 {t('about.aboutSiya', 'About Siya')}
@@ -36,7 +22,7 @@ const About = () => {
                             />
                         </div>
                         <div className="md:w-2/3">
-                            <div className="space-y-8">
+                            <div className="space-y-4">
                                 {/* Education */}
                                 <h3 className="text-xl font-semibold text-gray-700 mb-2 flex items-center gap-2">
                                     <svg className="w-6 h-6 text-[#8d6e63]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0v6" /></svg>

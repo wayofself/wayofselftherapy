@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import i18n from './i18n.js';
 import { BrowserRouter, HashRouter } from 'react-router-dom';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 function MainLayout() {
     useEffect(() => {
@@ -35,8 +36,10 @@ function MainLayout() {
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-        <BrowserRouter basename={"/"}>
-            <MainLayout />
-        </BrowserRouter>
+        <GoogleReCaptchaProvider reCaptchaKey="6LciCoorAAAAAF9rJaIkWLimYBU8q_fUmurZ5bfQ">
+            <BrowserRouter basename={"/"}>
+                <MainLayout />
+            </BrowserRouter>
+        </GoogleReCaptchaProvider>
     </StrictMode>,
 )

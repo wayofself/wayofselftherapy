@@ -2,10 +2,12 @@ import bgImg from '/bgImg.png';
 import React, {useState} from 'react';
 import emailjs from '@emailjs/browser';
 import { useTranslation } from 'react-i18next';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 // init Contact
 const Contact = () => {
     const { t } = useTranslation();
+    const { executeRecaptcha } = useGoogleReCaptcha();
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -14,6 +16,7 @@ const Contact = () => {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState(null);
+    const [recaptchaError, setRecaptchaError] = useState(null);
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -24,6 +27,17 @@ const Contact = () => {
         e.preventDefault();
         setIsSubmitting(true);
         setSubmitStatus(null);
+        setRecaptchaError(null);
+
+        let token = null;
+        if (executeRecaptcha) {
+            token = await executeRecaptcha('contact_form');
+        }
+        if (!token) {
+            setRecaptchaError('reCAPTCHA validation failed. Please try again.');
+            setIsSubmitting(false);
+            return;
+        }
 
         try {
             // init EmailJS config
@@ -39,7 +53,8 @@ const Contact = () => {
                     from_name: formData.name,
                     reply_to: formData.email,
                     phone: formData.phone,
-                    message: formData.message
+                    message: formData.message,
+                    recaptcha_token: token
                 },
                 userId
             );
@@ -57,11 +72,11 @@ const Contact = () => {
     return (
         <div
             className="min-h-screen bg-gradient-to-br px-4 sm:px-6 bg-[#fffaf3] font-poppins">
-            <div className="max-w-6xl mx-auto pt-2">
+            <div className="max-w-6xl mx-auto pt-2 text-[90%]">
                 {/*split grid*/}
                 <div className="grid grid-row-1 lg:grid-row-2 gap-1">
                     {/*contact message*/}
-                    <div className="p-7 pt-20  text-white rounded-xl shadow-xl overflow-hidden"
+                    <div className="p-2 md:p-7 pt-20  text-white rounded-xl shadow-xl overflow-hidden"
                          style={{
                              backgroundImage: `url('${bgImg}')`,
                              backgroundSize: "cover",
@@ -77,7 +92,7 @@ const Contact = () => {
                                 {t('contact.heroDesc', "I offer a free 20-minute initial phone consultation to answer your questions and discuss how I might help. Let's connect and take the first step towards your well-being today.")}
                             </p>
                         </div>
-                        <div className="justify-items-center">
+                        <div className="flex justify-center items-center">
                             <div className="flex text-center mb-5">
                                 <a
                                     className="bg-[#7b491d] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#4d3219] transition-colors shadow-lg"
@@ -131,7 +146,7 @@ const Contact = () => {
                         </div>
                     </div>
                     {/*Form start here*/}
-                    <div className="mt-15 p-4">
+                    <div className="mt-15 mb-6 p-4">
                         <h2 className="text-2xl font-bold mb-6 text-gray-800">{t('contact.title', 'Send a Direct Message')}</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-4">
@@ -187,7 +202,7 @@ const Contact = () => {
                                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
-                            <div className="mb-6">
+                            <div className="mb-8">
                                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                                     {t('contact.message', 'Message (required)')}
                                 </label>
@@ -204,6 +219,9 @@ const Contact = () => {
                                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 ></textarea>
                             </div>
+                            {recaptchaError && (
+                                <p className="mt-2 text-red-600 text-center">{recaptchaError}</p>
+                            )}
                             <button
                                 type="submit"
                                 disabled={isSubmitting}

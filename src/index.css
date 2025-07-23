@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Long+Cang&family=Noto+Serif+SC:wght@200..900&display=swap');
 @import "tailwindcss";
 
-*{
+* {
     font-family: var(--font-poppins);
 }
 
@@ -19,7 +21,7 @@
     color: #222;
     padding: 0.5rem 1.5rem;
     border-radius: 0.5rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     outline: none;
     transition: left 0.2s;
 }
@@ -36,3 +38,7 @@
     box-shadow: 0 0 0 2px #bfdbfe;
 }
 
+/* Hide reCAPTCHA badge */
+.grecaptcha-badge {
+    visibility: hidden !important;
+}
