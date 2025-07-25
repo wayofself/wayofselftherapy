@@ -24,7 +24,7 @@ const About = () => {
                         <div className="md:w-2/3">
                             <div className="space-y-4">
                                 {/* Education */}
-                                <h3 className="text-xl font-semibold text-gray-700 mb-2 flex items-center gap-2">
+                                <h3 className="text-xl font-semibold text-gray-700 mb-2 flex items-center gap-2">   
                                     <svg className="w-6 h-6 text-[#8d6e63]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0v6" /></svg>
                                     {t('about.education', 'Education & Credentials')}
                                 </h3>
@@ -45,7 +45,7 @@ const About = () => {
                                     {t('about.howIWork', 'How I Work')}
                                 </h3>
                                 <div className="text-gray-700 leading-relaxed">
-                                    <p>{t('about.howIWorkText', "I specialize in helping you meet wounded, protective, or disliked aspects of yourself with curiosity—especially self-critical parts that whisper 'you're too much.' Through Internal Family Systems (IFS), we'll gently reconnect you with your calm, compassionate core Self. When we meet our inner world without judgment, we transform suffering at its source—cultivating not just balance, but enduring self-trust.")}</p>
+                                    <p>{t('about.howIWorkText', "I specialize in helping you meet wounded, protective, or disliked aspects of yourself with curiosity—especially self-critical parts that whisper 'you're too much.' Through Internal Family Systems-informed interventions, we'll gently reconnect you with your calm, compassionate core Self. When we meet our inner world without judgment, we transform suffering at its source—cultivating not just balance, but enduring self-trust.")}</p>
                                 </div>
                                 {/* Beyond Therapy */}
                                 <h3 className="text-xl font-semibold text-gray-700 mb-2 flex items-center gap-2">

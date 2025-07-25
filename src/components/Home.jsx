@@ -82,7 +82,7 @@ const Home = () => {
 
                             <div className="bg-[#efeae4] p-6 rounded-4xl ">
                                 <div className="text-lg leading-relaxed">
-                                    {t('home.intro2', 'In our sessions, I create a safe space where your story is honored without reservation. You hold the deepest wisdom about your life; my role is to walk beside you with clinical insight and therapeutic tools.')}
+                                    {t('home.intro2', 'In our work together, I create a safe and welcoming space where your story is fully heard and valued. You hold the deepest wisdom about your life. My role is to walk beside you—holding space, sharing tools, and honoring your journey every step of the way.')}
                                 </div>
                             </div>
                         </div>
