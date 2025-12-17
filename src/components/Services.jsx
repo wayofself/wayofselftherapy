@@ -37,7 +37,7 @@ function FAQSection({ t }) {
                 return (
                     <li key={faq.q}>
                         <button
-                            className={`w-full text-left flex items-center justify-between text-xl md:text-xl text-gray-700 font-normal py-2 border-b border-gray-400 focus:outline-none transition-colors ${isOpen ? 'font-medium' : ''}`}
+                            className={`w-full text-left flex items-center justify-between text-2sm md:text-xl text-gray-700 font-normal py-2 border-b border-gray-400 focus:outline-none transition-colors ${isOpen ? 'font-medium' : ''}`}
                             onClick={() => setOpenIdx(isOpen ? -1 : idx)}
                             aria-expanded={isOpen}
                         >
@@ -183,7 +183,7 @@ const Services = () => {
 
                 {/* FAQ section */}
                 <div className="my-13">
-                    <h2 className="text-3xl font-serif font-bold text-black text-center">{t('services.faqTitle', 'Frequently Asked Questions')}</h2>
+                    <h2 className="text-2xl md:text-3xl font-serif font-bold text-black text-center">{t('services.faqTitle', 'Frequently Asked Questions')}</h2>
                     <div className="w-45 h-1 bg-black mx-auto mt-6 mb-8"></div>
                     <FAQSection t={t} />
                 </div>
