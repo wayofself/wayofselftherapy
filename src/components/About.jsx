@@ -131,6 +131,7 @@ const About = () => {
                                 </h3>
                                 <div className="text-gray-700 leading-relaxed">
                                     <p>{t('about.beyondTherapyText', "Beyond therapy, life with my three cats—especially my serene white companion—teaches daily lessons in boundaries, rest, and radical self-honoring. Their instinctive wisdom mirrors what I hope for you: that prioritizing your needs becomes second nature, not guilt—a foundation for authentic growth.")}</p>
+                                    <p className='pt-2'>{t('about.beyondTherapyText2', " ")}</p>
                                 </div>
                             </div>
                         </div>
